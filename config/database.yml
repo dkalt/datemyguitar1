@@ -1,0 +1,16 @@
+postgres_settings: &postgres_settings
+  adapter: postgresql
+
+development:
+  <<: *postgres_settings
+  adapter: sqlite3
+  database: db/dev.sqlite3
+
+production:
+  adapter: postgresql
+
+test:
+  adapter: sqlite3
+  pool: 5
+  timeout: 5000
+  database: db/test.sqlite3
