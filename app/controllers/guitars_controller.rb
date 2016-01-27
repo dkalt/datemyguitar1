@@ -19,9 +19,8 @@ class GuitarsController < ApplicationController
 
     def edit
       @guitar = Guitar.find params[:id]
-
-
-      response = HTTParty.get("https://reverb.com/api/listings?query=#{@guitar.model}&per_page=20")
+      url = URI.escape("https://reverb.com/api/listings?make=#{@guitar.brand}&model=#{@guitar.model}&per_page=20")
+      response = HTTParty.get(url)
       parsed_json = JSON.parse(response)
       @listings = parsed_json["listings"]
     end
