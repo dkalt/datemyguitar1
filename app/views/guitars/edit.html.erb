@@ -21,6 +21,7 @@
 <br>
 
 <a href="https://reverb.com/"><img alt="Reverb footer logo" class="img-hoverable" height="38" src="https://d1g5417jjjo7sf.cloudfront.net/assets/footer/footer-logo-4a117f88dd7a2fdc5a9299edc3e7b080.svg" width="136"></a>
+
 <% @listings.each do |listing| %>
   <%= link_to image_tag(listing["_links"]["photo"]["href"],:width => 100, :height => 100), listing["_links"]["web"]["href"] %>
 <% end %>
