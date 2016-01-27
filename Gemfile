@@ -24,6 +24,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'smarter_csv', '~> 1.1'
 
+gem 'httparty'
+
 group :production do
   gem 'pg'
 end

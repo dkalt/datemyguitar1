@@ -13,4 +13,11 @@
   limitations under the License.
 %>
 
+<h1>Edit Guitar</h1>
+
 <%= render partial: "form" %>
+
+
+<% @listings.each do |listing| %>
+  <%= link_to image_tag(listing["_links"]["photo"]["href"]), listing["_links"]["web"]["href"] %>
+<% end %>

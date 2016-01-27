@@ -1,6 +1,6 @@
 class GuitarsController < ApplicationController
 
-    PER_PAGE = 10
+    PER_PAGE = 20
 
     def index
       page_number = params[:page] ? params[:page].to_i : 1
@@ -19,6 +19,10 @@ class GuitarsController < ApplicationController
 
     def edit
       @guitar = Guitar.find params[:id]
+
+      response = HTTParty.get("https://reverb.com/api/listings?query=#{@guitar.brand}&per_page=3")
+      parsed_json = JSON.parse(response)
+      @listings = parsed_json["listings"]
     end
     # [END new_and_edit]
 
