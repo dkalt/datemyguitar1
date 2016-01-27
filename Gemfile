@@ -26,6 +26,8 @@ gem 'smarter_csv', '~> 1.1'
 
 gem 'httparty'
 
+gem 'bootstrap-sass', '~> 3.3.6'
+
 group :production do
   gem 'pg'
 end
