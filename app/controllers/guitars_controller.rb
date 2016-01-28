@@ -77,7 +77,7 @@ class GuitarsController < ApplicationController
     private
 
     def guitar_params
-      params.require(:guitar).permit(:make, :model, :description, :serial_num,:month,:year)
+      params.require(:guitar).permit(:make, :model, :description, :serial_range_start, :serial_range_end, :month,:year)
     end
     # [END create]
 

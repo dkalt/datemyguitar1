@@ -1,4 +1,4 @@
-make, model, serial_num, month, year, description
-Fender, Stratocaster, 12345, 06, 2015, My awesome strat
-Fender, Telecaster, 12346, 06, 2015, My awesome telecaster
-Fender, Jazzmaster, 12347, 06, 2015, My awesome jazzmaster
+make, model, serial_range_start, serial_range_end, month, year, description
+Fender, Stratocaster, 0000, 00005, 06, 2015, My awesome strat
+Fender, Telecaster, 00006, 00010, 06, 2015, My awesome telecaster
+Fender, Jazzmaster, 00010, 00020, 2015, My awesome jazzmaster

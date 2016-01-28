@@ -1,7 +1,8 @@
 class Guitar < ActiveRecord::Base
 
   def self.search(query)
-    where("serial_num LIKE '%#{query}%'")
+    # FIXME 
+    where("serial_range_start LIKE '%#{query}%'")
   end
-  
+
 end
