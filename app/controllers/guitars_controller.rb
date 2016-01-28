@@ -20,10 +20,10 @@ class GuitarsController < ApplicationController
     def edit
       @guitar = Guitar.find params[:id]
       # Fuzzy way
-      # query = "#{@guitar.brand} #{@guitar.model} #{@guitar.year}"
+      # query = "#{@guitar.make} #{@guitar.model} #{@guitar.year}"
       # url = URI.escape("https://reverb.com/api/listings?query=#{query}&per_page=20")
       # Sturcutred way
-      url = URI.escape("https://reverb.com/api/listings?make=#{@guitar.brand}&model=#{@guitar.model}&per_page=20")
+      url = URI.escape("https://reverb.com/api/listings?make=#{@guitar.make}&model=#{@guitar.model}&per_page=20")
       response = HTTParty.get(url)
       parsed_json = JSON.parse(response)
       @listings = parsed_json["listings"]
@@ -77,7 +77,7 @@ class GuitarsController < ApplicationController
     private
 
     def guitar_params
-      params.require(:guitar).permit(:brand, :model, :description, :serial_num,:month,:year)
+      params.require(:guitar).permit(:make, :model, :description, :serial_num,:month,:year)
     end
     # [END create]
 

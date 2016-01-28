@@ -13,7 +13,7 @@ class ReverbApiImporter
 
     listings.each do |listing|
       Guitar.create(
-        brand: listing["make"],
+        make: listing["make"],
         model: listing["model"],
         description: listing["description"]
       )
