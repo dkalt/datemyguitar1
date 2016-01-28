@@ -7,7 +7,6 @@ class GuitarsController < ApplicationController
       guitars_offset = PER_PAGE * (page_number - 1)
       @guitars   = Guitar.limit(PER_PAGE).offset(guitars_offset)
       @next_page  = page_number + 1 if @guitars.count == PER_PAGE
-      render :index
     end
   # [END index]
 
@@ -19,14 +18,7 @@ class GuitarsController < ApplicationController
 
     def edit
       @guitar = Guitar.find params[:id]
-      # Fuzzy way
-      # query = "#{@guitar.make} #{@guitar.model} #{@guitar.year}"
-      # url = URI.escape("https://reverb.com/api/listings?query=#{query}&per_page=20")
-      # Sturcutred way
-      url = URI.escape("https://reverb.com/api/listings?make=#{@guitar.make}&model=#{@guitar.model}&per_page=20")
-      response = HTTParty.get(url)
-      parsed_json = JSON.parse(response)
-      @listings = parsed_json["listings"]
+      @listings = get_reverb_listings(@guitar)
     end
     # [END new_and_edit]
 
@@ -69,18 +61,27 @@ class GuitarsController < ApplicationController
       end
     end
 
-  def search
-    @guitars = Guitar.search params[:query]
-    render 'index'
-  end
+    def search
+      @guitar = Guitar.search(params[:make], params[:query]).first
+      @listings = get_reverb_listings(@guitar)
+    end
 
     private
 
     def guitar_params
       params.require(:guitar).permit(:make, :model, :description, :serial_range_start, :serial_range_end, :month,:year)
     end
+
+    def get_reverb_listings(guitar)
+      return [] unless guitar.present?
+      # Fuzzy way
+      # query = "#{@guitar.make} #{@guitar.model} #{@guitar.year}"
+      # url = URI.escape("https://reverb.com/api/listings?query=#{query}&per_page=20")
+      # Sturcutred way
+      url = URI.escape("https://reverb.com/api/listings?make=#{guitar.make}&model=#{guitar.model}&per_page=20")
+      response = HTTParty.get(url)
+      parsed_json = JSON.parse(response)
+      parsed_json["listings"]
+    end
     # [END create]
-
-
-
 end

@@ -13,11 +13,27 @@
   limitations under the License.
 %>
 
-<h1>Edit Guitar</h1>
+<h3>Search Serials</h3>
 
-<%= render partial: "form" %>
 
-<br>
-<br>
+<div>
+  <%= form_tag search_guitars_path, method: :get do |form| %>
+    <%= select_tag :make, options_for_select(Guitar.uniq.pluck(:make)) %>
+    <%= text_field_tag :query, params[:query] %>
+    <%= submit_tag "Search" %>
+  <% end %>
+</div>
+
+<% if @guitar %>
+<h2><%= @guitar.make %>  &nbsp;</h2>
+<h2><%= @guitar.model %> &nbsp;</h2>
+<%= @guitar.description %> &nbsp;
+<%= @guitar.serial_range_start %> &nbsp;
+<%= @guitar.serial_range_end %> &nbsp;
+<%= @guitar.month %> &nbsp;
+<%= @guitar.year %> &nbsp;
 
 <%= render "reverb_listings", listings: @listings %>
+<% elsif params[:query] %>
+  No results.
+<% end %>

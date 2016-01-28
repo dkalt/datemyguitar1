@@ -21,11 +21,11 @@
 <% end %>
 
 <div>
-  <form action="/guitars/search">
-     <p> search serial </p>
-    <input type="text" name="query">
-    <input type="submit">
-  </form>
+  <%= form_tag search_guitars_path, method: :get do |form| %>
+    <%= select_tag :make, options_for_select(Guitar.uniq.pluck(:make)) %>
+    <%= text_field_tag :query %>
+    <%= submit_tag "Search" %>
+  <% end %>
 </div>
 
 
