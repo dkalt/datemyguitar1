@@ -13,11 +13,12 @@
   limitations under the License.
 %>
 
-<h3>Search Serials</h3>
-
+<h3>Date your Guitar</h3>
+<br>
 
 <div>
   <%= form_tag search_guitars_path, method: :get do |form| %>
+
     <%= select_tag :make, options_for_select(Guitar.uniq.pluck(:make)) %>
     <%= text_field_tag :query, params[:query] %>
     <%= submit_tag "Search" %>
