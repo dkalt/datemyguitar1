@@ -25,13 +25,12 @@
 </div>
 
 <% if @guitar %>
-<h2><%= @guitar.make %>  &nbsp;</h2>
-<h2><%= @guitar.model %> &nbsp;</h2>
-<%= @guitar.description %> &nbsp;
-<%= @guitar.serial_range_start %> &nbsp;
-<%= @guitar.serial_range_end %> &nbsp;
-<%= @guitar.month %> &nbsp;
-<%= @guitar.year %> &nbsp;
+
+ <h2>Your <%= @guitar.make %> guitar was built in : <%= @guitar.year %></h2>
+<br>
+<br>
+
+<h2> Check out the following <%= @guitar.make %> guitars on Reverb from: <%= @guitar.year %></h2>
 
 <%= render "reverb_listings", listings: @listings %>
 <% elsif params[:query] %>

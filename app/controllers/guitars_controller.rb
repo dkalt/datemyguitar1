@@ -78,8 +78,8 @@ class GuitarsController < ApplicationController
       # query = "#{@guitar.make} #{@guitar.model} #{@guitar.year}"
       # url = URI.escape("https://reverb.com/api/listings?query=#{query}&per_page=20")
       # Sturcutred way
-      url = URI.escape("https://reverb.com/api/listings?make=#{guitar.make}&model=#{guitar.model}&per_page=20")
-      response = HTTParty.get(url)
+      @url = URI.escape("https://reverb.com/api/listings?make=#{guitar.make}&model=#{guitar.model}&year=#{guitar.year}&per_page=15")
+      response = HTTParty.get(@url)
       parsed_json = JSON.parse(response)
       parsed_json["listings"]
     end
