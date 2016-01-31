@@ -11,6 +11,8 @@ resources :guitars do
     get :search
   end
 end
+
+resources :makers 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

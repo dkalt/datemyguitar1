@@ -14,9 +14,9 @@
 %>
 
 
-<% if @guitar.errors.any? %>
+<% if @maker.errors.any? %>
   <div class="errors">
-    <% @guitar.errors.full_messages.each do |message| %>
+    <% @maker.errors.full_messages.each do |message| %>
       <div class="alert alert-danger"><%= message %></div>
     <% end %>
   </div>
@@ -25,36 +25,28 @@
 <%# [START book_form] %>
 
 
-<%= form_for @guitar do |f| %>
+<%= form_for @maker do |f| %>
 <div class="form-group">
-  <%= f.label :make %>
-  <%= f.text_field :make, size: 20 %>
+  <%= f.label :maker_name %>
+  <%= f.text_field :maker_name, size: 30 %>
 </div>
 <div class="form-group">
-  <%= f.label :model %>
-  <%= f.text_field :model, size: 50 %>
+  <%= f.label :maker_url %>
+  <%= f.text_field :maker_url, size: 50 %>
 </div>
 
   <div class="form-group">
-  <%= f.label :serial_range_start %>
-  <%= f.text_field :serial_range_start %>
+  <%= f.label :maker_serial_url %>
+  <%= f.text_field :maker_serial_url %>
   </div>
   <div class="form-group">
-  <%= f.label :serial_range_end %>
-  <%= f.text_field :serial_range_end %>
-  </div>
-  <div class="form-group">
-  <%= f.label :month %>
-  <%= f.text_field :month %>
-  </div>
-  <div class="form-group">
-  <%= f.label :year %>
-  <%= f.text_field :year %>
+  <%= f.label :maker_image_url %>
+  <%= f.text_field :maker_image_url %>
   </div>
 
 <div class="form-group">
-  <%= f.label :description %>
-  <%= f.text_area :description, cols: 40, rows: 10 %>
+  <%= f.label :maker_description %>
+  <%= f.text_area :maker_description, cols: 40, rows: 10 %>
 </div>
 
 

@@ -19,7 +19,7 @@
 <div>
   <%= form_tag search_guitars_path, method: :get do |form| %>
 
-    <%= select_tag :make, options_for_select(Guitar.uniq.pluck(:make)) %>
+    <%= select_tag :make, options_for_select(Maker.uniq.pluck(:maker_name)) %>
     <%= text_field_tag :query, params[:query] %>
     <%= submit_tag "Search", class: "btn btn-success"  %>
   <% end %>

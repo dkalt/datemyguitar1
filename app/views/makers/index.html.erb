@@ -29,7 +29,11 @@
   <td>maker_url</td>
   <td>maker_serial_url</td>
   <td>maker_image_url</td>
-    <td>maker_description</td>
+  <td>maker_description</td>
+  <td></td>
+  <td></td>
+  <td></td>
+
   </tr>
 </thead>
 
@@ -41,9 +45,9 @@
     <td><%= maker.maker_image_url %></td>
       <td><%= maker.maker_description %></td>
 
-    <td><%= link_to "Edit", edit_makers_path(maker) %></td>
-    <td><%= link_to "View", makers_path(maker) %></td>
-    <td> <%= link_to "Delete", makers_path(maker), method: :delete  %> </td>
+    <td><%= link_to "Edit", edit_maker_path(maker) %></td>
+    <td><%= link_to "View", maker_path(maker) %></td>
+    <td> <%= link_to "Delete", maker_path(maker), method: :delete  %> </td>
   </tr>
 <% end %>
 </table>
@@ -58,6 +62,6 @@
 <%# [END book_list] %>
 
 
-<% if @guitars.none? %>
-  <p>No Guitars found.</p>
+<% if @makers.none? %>
+  <p>No Makers found.</p>
 <% end %>
