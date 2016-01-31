@@ -13,27 +13,11 @@
   limitations under the License.
 %>
 
-<h3>Date your Guitar</h3>
-<br>
+<h1>Edit Guitar</h1>
 
-<div>
-  <%= form_tag search_guitars_path, method: :get do |form| %>
+<%= render partial: "form" %>
 
-    <%= select_tag :make, options_for_select(Guitar.uniq.pluck(:make)) %>
-    <%= text_field_tag :query, params[:query] %>
-    <%= submit_tag "Search", class: "btn btn-success"  %>
-  <% end %>
-</div>
-
-<% if @guitar %>
-
- <h2>Your <%= @guitar.make %> guitar was built in : <%= @guitar.year %></h2>
 <br>
 <br>
-
-<h2> Check out the following <%= @guitar.make %> guitars on Reverb from: <%= @guitar.year %></h2>
 
 <%= render "reverb_listings", listings: @listings %>
-<% elsif params[:query] %>
-  No results.
-<% end %>

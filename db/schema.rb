@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160128224404) do
+ActiveRecord::Schema.define(version: 20160131030803) do
 
   create_table "guitars", force: :cascade do |t|
     t.string   "make"
@@ -24,6 +24,16 @@ ActiveRecord::Schema.define(version: 20160128224404) do
     t.datetime "updated_at",         null: false
     t.string   "serial_range_start"
     t.string   "serial_range_end"
+  end
+
+  create_table "makers", force: :cascade do |t|
+    t.string   "maker_name"
+    t.string   "maker_url"
+    t.text     "maker_description"
+    t.string   "maker_serial_url"
+    t.string   "maker_image_url"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
 end

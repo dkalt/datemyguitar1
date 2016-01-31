@@ -1,0 +1,2 @@
+create maker database -  collings, url, description, history, url to serial_num
+create pwd for path  - guitar

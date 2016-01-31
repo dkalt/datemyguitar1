@@ -1,0 +1,63 @@
+<%#
+  Copyright 2015, Google, Inc.
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+%>
+
+<h3>Makers</h3>
+
+<%= link_to new_maker_path, class: "btn btn-success btn-sm" do %>
+  <i class="glyphicon glyphicon-plus"></i>
+  <span>Add Maker ( i.e. Rickenbacker)</span>
+<% end %>
+
+
+<%# [START book_list] %>
+<table class="table table-striped table-bordered">
+<thead>
+  <tr>
+  <td>maker</td>
+  <td>maker_url</td>
+  <td>maker_serial_url</td>
+  <td>maker_image_url</td>
+    <td>maker_description</td>
+  </tr>
+</thead>
+
+<% @makers.each do |maker| %>
+  <tr>
+    <td><%= maker.maker_name %></td>
+    <td><%= maker.maker_url %></td>
+    <td><%= maker.maker_serial_url %></td>
+    <td><%= maker.maker_image_url %></td>
+      <td><%= maker.maker_description %></td>
+
+    <td><%= link_to "Edit", edit_makers_path(maker) %></td>
+    <td><%= link_to "View", makers_path(maker) %></td>
+    <td> <%= link_to "Delete", makers_path(maker), method: :delete  %> </td>
+  </tr>
+<% end %>
+</table>
+
+<% if @next_page %>
+  <nav>
+    <ul class="pager">
+      <li><%= link_to "More", makers_path(page: @next_page) %></li>
+    </ul>
+  </nav>
+<% end %>
+<%# [END book_list] %>
+
+
+<% if @guitars.none? %>
+  <p>No Guitars found.</p>
+<% end %>

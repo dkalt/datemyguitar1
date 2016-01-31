@@ -2,6 +2,15 @@ class GuitarsController < ApplicationController
 
     PER_PAGE = 20
 
+
+      before_filter :authenticate
+
+      def authenticate
+        authenticate_or_request_with_http_basic('Administration') do |username, password|
+          username == 'admin' && password == '123'
+        end
+      end
+
     def index
       page_number = params[:page] ? params[:page].to_i : 1
       guitars_offset = PER_PAGE * (page_number - 1)
@@ -78,8 +87,8 @@ class GuitarsController < ApplicationController
       # query = "#{@guitar.make} #{@guitar.model} #{@guitar.year}"
       # url = URI.escape("https://reverb.com/api/listings?query=#{query}&per_page=20")
       # Sturcutred way
-      @url = URI.escape("https://reverb.com/api/listings?make=#{guitar.make}&model=#{guitar.model}&year=#{guitar.year}&per_page=15")
-      response = HTTParty.get(@url)
+      url = URI.escape("https://reverb.com/api/listings?make=#{guitar.make}&model=#{guitar.model}&year=#{guitar.year}&per_page=15")
+      response = HTTParty.get(url)
       parsed_json = JSON.parse(response)
       parsed_json["listings"]
     end
