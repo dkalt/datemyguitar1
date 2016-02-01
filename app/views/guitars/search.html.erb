@@ -13,27 +13,49 @@
   limitations under the License.
 %>
 
-<h3>Date your Guitar</h3>
-<br>
+<table class="table" >
+<thead>
+<tr>
+  <%= link_to((image_tag 'date_your_guitar.png'), search_guitars_path) %>
+</tr>
+</thead>
+  <tr>
+    <td>Input Make / Model & Serial Number</td>
+  </tr>
+<tr>
+  <td>
 
-<div>
-  <%= form_tag search_guitars_path, method: :get do |form| %>
-
+    <%= form_tag search_guitars_path, method: :get do |form| %>
     <%= select_tag :make, options_for_select(Maker.uniq.pluck(:maker_name)) %>
-    <%= text_field_tag :query, params[:query] %>
+      <%= text_field_tag :query, params[:query] , placeholder: "L3456" %>
     <%= submit_tag "Search", class: "btn btn-success"  %>
+
   <% end %>
-</div>
+  </td>
+</tr>
+<tr>
+</tr>
 
 <% if @guitar %>
 
- <h2>Your <%= @guitar.make %> guitar was built in : <%= @guitar.year %></h2>
-<br>
-<br>
+<tr>
+  <td>
+  <%= @guitar.make %> <%= @guitar.model%> was built in : <%= @guitar.year %>
+  </td>
+</tr>
 
-<h2> Check out the following <%= @guitar.make %> guitars on Reverb from: <%= @guitar.year %></h2>
+
+<tr>
+  <td>
+
+Check out the following <%= @guitar.make %> guitars on Reverb from: <%= @guitar.year %>
 
 <%= render "reverb_listings", listings: @listings %>
 <% elsif params[:query] %>
   No results.
 <% end %>
+</td>
+</tr>
+
+
+</table>

@@ -1,0 +1,13 @@
+make,model,description,serial_range_start,serial_range_end,month,year
+Fender,,,0001,0999,,1952
+Fender,,,0001,2500,,1953
+Fender,,,0001,5300,,1954
+Fender,,,7000,9000,,1955
+Fender,,,9000,17000,,1956
+Fender,,,17000,25000,,1957
+Fender,,,25000,34000,,1958
+Fender,,,34000,44000,,1959
+Fender,,,44000,59000,,1960
+Fender,,,59000,71000,,1961
+Fender,,,71000,93000,,1962
+Fender,,,93000,99999,,1963

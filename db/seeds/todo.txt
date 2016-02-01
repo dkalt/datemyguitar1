@@ -1,2 +1,6 @@
 create maker database -  collings, url, description, history, url to serial_num
 separate admin functionality to a controller.
+sort on plucked list of makers
+access maker date from search view in guitars of maker after search results`
+default to selected items
+Add Model Field to Maker.

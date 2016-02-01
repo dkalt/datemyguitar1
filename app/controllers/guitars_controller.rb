@@ -1,6 +1,6 @@
 class GuitarsController < ApplicationController
 
-    PER_PAGE = 20
+    PER_PAGE = 60
 
 
       before_filter :authenticate
